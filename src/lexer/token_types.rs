@@ -24,3 +24,22 @@ pub enum TokenTypes {
     // END OF FILE
     Eof
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_token_types() {
+        assert_eq!(TokenTypes::LeftParen as u8, 0);
+        assert_eq!(TokenTypes::RightParen as u8, 1);
+        assert_eq!(TokenTypes::Identifier as u8, 20);
+        assert_eq!(TokenTypes::Eof as u8, 27);
+    }
+
+    #[test]
+    fn test_token_types_equality() {
+        assert_eq!(TokenTypes::LeftParen, TokenTypes::LeftParen);
+        assert_ne!(TokenTypes::LeftParen, TokenTypes::RightParen);
+    }
+}

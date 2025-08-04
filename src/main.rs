@@ -1,8 +1,8 @@
 use std::{env, fs, io::{self, stdin, BufRead, Write}};
 
 mod lexer;
+mod errors;
 
-use lexer::token_types;
 
 fn main() {
     let args = env::args().collect::<Vec<String>>();
@@ -66,14 +66,4 @@ fn run_prompt() {
 fn run(source: &str) {
     // Scan the input source
     println!("{}", source);
-}
-
-fn error(line: &u128, message: &str) {
-    report(line, message, "Error");
-}
-
-fn report(line: &u128, message: &str, where_: &str) {
-    // TODO Make this more flexible with the user, and don't kill the session
-    eprintln!("Error: {} at line {}: {}", where_, line, message);
-    std::process::exit(1);  
 }
